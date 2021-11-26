@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
-import { Login, Register } from "./stores/login/index";
-
+import { Login, Register, Main } from "./stores/login/index";
+import {Route, BrowserRouter, Routes} from 'react-router-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +13,14 @@ class App extends React.Component {
   componentDidMount() {
     //Add .right by default
     this.rightSide.classList.add("right");
+  }
+
+  RegisterClick=()=>{
+    <BrowserRouter>
+      <Routes>
+          <Route exact path="/register" element={Register}/>
+      </Routes>
+    </BrowserRouter>
   }
 
   changeState() {
@@ -49,6 +57,7 @@ class App extends React.Component {
             containerRef={ref => (this.rightSide = ref)}
             onClick={this.changeState.bind(this)}
           />
+         
         </div>
       </div>
     );
@@ -68,5 +77,6 @@ const RightSide = props => {
     </div>
   );
 };
+
 
 export default App;
